@@ -30,17 +30,6 @@ module.exports = grammar({
     COMMA: $ => ',',
     CONST: $ => '#const',
     COUNT: $ => '#count',
-    CSP: $ => '$',
-    CSP_ADD: $ => '$+',
-    CSP_SUB: $ => '$-',
-    CSP_MUL: $ => '$*',
-    CSP_LEQ: $ => '$<=',
-    CSP_LT: $ => '$<',
-    CSP_GT: $ => '$>',
-    CSP_GEQ: $ => '$>=',
-    CSP_EQ: $ => '$=',
-    CSP_NEQ: $ => '$!=',
-    DISJOINT: $ => '#disjoint',
     DOT: $ => '.',
     DOTS: $ => '..',
     EXTERNAL: $ => '#external',
@@ -274,35 +263,7 @@ module.exports = grammar({
       seq($.NOT, $.NOT, $.atom),
       seq($.term, $.rellitvec),
       seq($.NOT, $.term, $.rellitvec),
-      seq($.NOT, $.NOT, $.term, $.rellitvec),
-      $.csp_literal
-    ),
-
-    csp_mul_term: $ => choice(
-      seq($.CSP, $.term, $.CSP_MUL, $.term),
-      seq($.term, $.CSP_MUL, $.CSP, $.term),
-      seq($.CSP, $.term),
-      $.term
-    ),
-
-    csp_add_term: $ => choice(
-      seq($.csp_add_term, $.CSP_ADD, $.csp_mul_term),
-      seq($.csp_add_term, $.CSP_SUB, $.csp_mul_term),
-      $.csp_mul_term
-    ),
-
-    csp_rel: $ => choice(
-      $.CSP_GT,
-      $.CSP_LT,
-      $.CSP_GEQ,
-      $.CSP_LEQ,
-      $.CSP_EQ,
-      $.CSP_NEQ
-    ),
-
-    csp_literal: $ => choice(
-      seq($.csp_literal, $.csp_rel, $.csp_add_term),
-      seq($.csp_add_term, $.csp_rel, $.csp_add_term),
+      seq($.NOT, $.NOT, $.term, $.rellitvec)
     ),
 
     litvec: $ => choice(
@@ -404,26 +365,6 @@ module.exports = grammar({
       $.theory_atom,
     ),
 
-    cspelemvec: $ => choice(
-      seq($.COLON, $.csp_add_term,),
-      seq($.COLON, $.csp_add_term, $.optcondition),
-      seq($.termvec, $.COLON, $.csp_add_term,),
-      seq($.termvec, $.COLON, $.csp_add_term, $.optcondition),
-      seq($.cspelemvec, $.SEM, $.COLON, $.csp_add_term,),
-      seq($.cspelemvec, $.SEM, $.COLON, $.csp_add_term, $.optcondition),
-      seq($.cspelemvec, $.SEM, $.termvec, $.COLON, $.csp_add_term,),
-      seq($.cspelemvec, $.SEM, $.termvec, $.COLON, $.csp_add_term, $.optcondition),
-    ),
-
-    disjoint: $ => choice(
-      seq($.DISJOINT, $.LBRACE, $.RBRACE),
-      seq($.DISJOINT, $.LBRACE, $.cspelemvec, $.RBRACE),
-      seq($.NOT, $.DISJOINT, $.LBRACE, $.RBRACE),
-      seq($.NOT, $.DISJOINT, $.LBRACE, $.cspelemvec, $.RBRACE),
-      seq($.NOT, $.NOT, $.DISJOINT, $.LBRACE, $.RBRACE),
-      seq($.NOT, $.NOT, $.DISJOINT, $.LBRACE, $.cspelemvec, $.RBRACE),
-    ),
-
     conjunction: $ => choice(
       seq($.literal, $.COLON,),
       seq($.literal, $.COLON, $.litvec)
@@ -472,9 +413,7 @@ module.exports = grammar({
       seq($.NOT, $.NOT, $.lubodyaggregate, $.SEM),
       seq($.bodycomma, $.NOT, $.NOT, $.lubodyaggregate, $.SEM),
       seq($.conjunction, $.SEM),
-      seq($.bodycomma, $.conjunction, $.SEM),
-      seq($.disjoint, $.SEM),
-      seq($.bodycomma, $.disjoint, $.SEM),
+      seq($.bodycomma, $.conjunction, $.SEM)
     ),
 
     bodydot: $ => choice(
@@ -488,8 +427,6 @@ module.exports = grammar({
       seq($.bodycomma, $.NOT, $.NOT, $.lubodyaggregate, $.DOT),
       seq($.conjunction, $.DOT),
       seq($.bodycomma, $.conjunction, $.DOT),
-      seq($.disjoint, $.DOT),
-      seq($.bodycomma, $.disjoint, $.DOT),
     ),
 
     bodyconddot: $ => choice(
@@ -510,9 +447,6 @@ module.exports = grammar({
       seq($.head, $.IF, $.bodydot),
       seq($.IF, $.bodydot),
       seq($.IF, $.DOT),
-      seq($.disjoint, $.IF, $.bodydot),
-      seq($.disjoint, $.IF, $.DOT),
-      seq($.disjoint, $.DOT),
       seq($.WIF, $.bodydot, $.LBRACK, $.optimizeweight, $.RBRACK),
       seq($.WIF, $.bodydot, $.LBRACK, $.optimizeweight, $.optimizetuple, $.RBRACK),
       seq($.MINIMIZE, $.LBRACE, $.RBRACE, $.DOT),
@@ -524,9 +458,6 @@ module.exports = grammar({
       seq($.SHOW, $.DOT),
       seq($.SHOW, $.term, $.COLON, $.bodydot),
       seq($.SHOW, $.term, $.DOT),
-      prec(8, seq($.SHOW, $.CSP, $.identifier, $.SLASH, $.NUMBER, $.DOT)),
-      seq($.SHOW, $.CSP, $.term, $.COLON, $.bodydot),
-      seq($.SHOW, $.CSP, $.term, $.DOT),
       seq($.DEFINED, $.identifier, $.SLASH, $.NUMBER, $.DOT),
       seq($.DEFINED, $.SUB, $.identifier, $.SLASH, $.NUMBER, $.DOT),
       seq($.EDGE, $.LPAREN, $.binaryargvec, $.RPAREN, $.bodyconddot),

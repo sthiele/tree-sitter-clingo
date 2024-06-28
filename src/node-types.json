@@ -356,10 +356,6 @@
           "named": true
         },
         {
-          "type": "disjoint",
-          "named": true
-        },
-        {
           "type": "literal",
           "named": true
         },
@@ -415,10 +411,6 @@
         },
         {
           "type": "conjunction",
-          "named": true
-        },
-        {
-          "type": "disjoint",
           "named": true
         },
         {
@@ -632,183 +624,9 @@
     }
   },
   {
-    "type": "csp_add_term",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "CSP_ADD",
-          "named": true
-        },
-        {
-          "type": "CSP_SUB",
-          "named": true
-        },
-        {
-          "type": "csp_add_term",
-          "named": true
-        },
-        {
-          "type": "csp_mul_term",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "csp_literal",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "csp_add_term",
-          "named": true
-        },
-        {
-          "type": "csp_literal",
-          "named": true
-        },
-        {
-          "type": "csp_rel",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "csp_mul_term",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "CSP",
-          "named": true
-        },
-        {
-          "type": "CSP_MUL",
-          "named": true
-        },
-        {
-          "type": "term",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "csp_rel",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "CSP_EQ",
-          "named": true
-        },
-        {
-          "type": "CSP_GEQ",
-          "named": true
-        },
-        {
-          "type": "CSP_GT",
-          "named": true
-        },
-        {
-          "type": "CSP_LEQ",
-          "named": true
-        },
-        {
-          "type": "CSP_LT",
-          "named": true
-        },
-        {
-          "type": "CSP_NEQ",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "cspelemvec",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "COLON",
-          "named": true
-        },
-        {
-          "type": "SEM",
-          "named": true
-        },
-        {
-          "type": "csp_add_term",
-          "named": true
-        },
-        {
-          "type": "cspelemvec",
-          "named": true
-        },
-        {
-          "type": "optcondition",
-          "named": true
-        },
-        {
-          "type": "termvec",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "dec",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "disjoint",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "DISJOINT",
-          "named": true
-        },
-        {
-          "type": "LBRACE",
-          "named": true
-        },
-        {
-          "type": "NOT",
-          "named": true
-        },
-        {
-          "type": "RBRACE",
-          "named": true
-        },
-        {
-          "type": "cspelemvec",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "disjunction",
@@ -1033,10 +851,6 @@
         },
         {
           "type": "atom",
-          "named": true
-        },
-        {
-          "type": "csp_literal",
           "named": true
         },
         {
@@ -1367,10 +1181,6 @@
           "named": true
         },
         {
-          "type": "CSP",
-          "named": true
-        },
-        {
           "type": "DEFAULT",
           "named": true
         },
@@ -1504,10 +1314,6 @@
         },
         {
           "type": "constterm",
-          "named": true
-        },
-        {
-          "type": "disjoint",
           "named": true
         },
         {
@@ -2449,46 +2255,6 @@
     "named": true
   },
   {
-    "type": "CSP",
-    "named": true
-  },
-  {
-    "type": "CSP_ADD",
-    "named": true
-  },
-  {
-    "type": "CSP_EQ",
-    "named": true
-  },
-  {
-    "type": "CSP_GEQ",
-    "named": true
-  },
-  {
-    "type": "CSP_GT",
-    "named": true
-  },
-  {
-    "type": "CSP_LEQ",
-    "named": true
-  },
-  {
-    "type": "CSP_LT",
-    "named": true
-  },
-  {
-    "type": "CSP_MUL",
-    "named": true
-  },
-  {
-    "type": "CSP_NEQ",
-    "named": true
-  },
-  {
-    "type": "CSP_SUB",
-    "named": true
-  },
-  {
     "type": "DEFAULT",
     "named": true
   },
@@ -2498,10 +2264,6 @@
   },
   {
     "type": "DIRECTIVE",
-    "named": true
-  },
-  {
-    "type": "DISJOINT",
     "named": true
   },
   {
