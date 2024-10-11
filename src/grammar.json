@@ -1800,15 +1800,15 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "rellitvec"
-            },
-            {
-              "type": "SYMBOL",
               "name": "cmp"
             },
             {
               "type": "SYMBOL",
               "name": "term"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "rellitvec"
             }
           ]
         }

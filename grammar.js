@@ -259,7 +259,7 @@ module.exports = grammar({
 
     rellitvec: $ => choice(
       seq($.cmp , $.term),
-      seq($.rellitvec, $.cmp, $.term)
+      seq($.cmp, $.term, $.rellitvec)
     ),
 
     literal: $ => choice(
