@@ -1,0 +1,319 @@
+==================
+numbers
+==================
+
+p(0,9,0xf,0b1,0o7).
+
+---
+
+(source_file
+  (statement
+    (rule
+      (head
+        (literal
+          (symbolic_atom
+            (identifier)
+            (pool
+              (terms
+                (term
+                  (number))
+                (term
+                  (number))
+                (term
+                  (number))
+                (term
+                  (number))
+                (term
+                  (number))))))))))
+
+==================
+constants
+==================
+
+p("abc", #inf, #sup).
+
+---
+
+(source_file
+  (statement
+    (rule
+      (head
+        (literal
+          (symbolic_atom
+            (identifier)
+            (pool
+              (terms
+                (term
+                  (string
+                    (string_fragment)))
+                (term
+                  (infimum))
+                (term
+                  (supremum))))))))))
+
+==================
+variables
+==================
+
+p(X,_,__'Xa').
+
+---
+
+(source_file
+  (statement
+    (rule
+      (head
+        (literal
+          (symbolic_atom
+            (identifier)
+            (pool
+              (terms
+                (term
+                  (variable))
+                (term
+                  (anonymous))
+                (term
+                  (variable))))))))))
+
+==================
+unary
+==================
+
+p(-1,~1,|1;2|).
+
+---
+
+(source_file
+  (statement
+    (rule
+      (head
+        (literal
+          (symbolic_atom
+            (identifier)
+            (pool
+              (terms
+                (term
+                  (unary
+                    (term
+                      (number))))
+                (term
+                  (unary
+                    (term
+                      (number))))
+                (term
+                  (abs
+                    (term
+                      (number))
+                    (term
+                      (number))))))))))))
+
+==================
+binary
+==================
+
+p(1-2,1*2,1**2,1/2,1\2).
+
+---
+
+(source_file
+  (statement
+    (rule
+      (head
+        (literal
+          (symbolic_atom
+            (identifier)
+            (pool
+              (terms
+                (term
+                  (binary
+                    (term
+                      (number))
+                    (term
+                      (number))))
+                (term
+                  (binary
+                    (term
+                      (number))
+                    (term
+                      (number))))
+                (term
+                  (binary
+                    (term
+                      (number))
+                    (term
+                      (number))))
+                (term
+                  (binary
+                    (term
+                      (number))
+                    (term
+                      (number))))
+                (term
+                  (binary
+                    (term
+                      (number))
+                    (term
+                      (number))))))))))))
+
+==================
+precedence
+==================
+
+p(1+2*3-4).
+
+---
+
+(source_file
+  (statement
+    (rule
+      (head
+        (literal
+          (symbolic_atom
+            (identifier)
+            (pool
+              (terms
+                (term
+                  (binary
+                    (term
+                      (binary
+                        (term
+                          (number))
+                        (term
+                          (number))))
+                    (term
+                      (binary
+                        (term
+                          (number))
+                        (term
+                          (number))))))))))))))
+
+==================
+function
+==================
+
+p(f(),g,h(;1;1,2),@g).
+
+---
+
+(source_file
+  (statement
+    (rule
+      (head
+        (literal
+          (symbolic_atom
+            (identifier)
+            (pool
+              (terms
+                (term
+                  (function
+                    (identifier)
+                    (pool
+                      (terms))))
+                (term
+                  (function
+                    (identifier)))
+                (term
+                  (function
+                    (identifier)
+                    (pool
+                      (terms)
+                      (terms
+                        (term
+                          (number)))
+                      (terms
+                        (term
+                          (number))
+                        (term
+                          (number))))))
+                (term
+                  (external_function
+                    (identifier)))))))))))
+
+==================
+tuple
+==================
+
+p((),(;a;a,;;a,b;a,b,)).
+
+---
+
+(source_file
+  (statement
+    (rule
+      (head
+        (literal
+          (symbolic_atom
+            (identifier)
+            (pool
+              (terms
+                (term
+                  (tuple
+                    (terms)))
+                (term
+                  (tuple
+                    (terms)
+                    (terms
+                      (term
+                        (function
+                          (identifier))))
+                    (terms
+                      (term
+                        (function
+                          (identifier))))
+                    (terms)
+                    (terms
+                      (term
+                        (function
+                          (identifier)))
+                      (term
+                        (function
+                          (identifier))))
+                    (terms
+                      (term
+                        (function
+                          (identifier)))
+                      (term
+                        (function
+                          (identifier))))))))))))))
+
+==================
+identifier
+==================
+
+p(n, no, noxt, a, -n, -no, -noxt, -a).
+
+---
+
+(source_file
+  (statement
+    (rule
+      (head
+        (literal
+          (symbolic_atom
+            (identifier)
+            (pool
+              (terms
+                (term
+                  (function
+                    (identifier)))
+                (term
+                  (function
+                    (identifier)))
+                (term
+                  (function
+                    (identifier)))
+                (term
+                  (function
+                    (identifier)))
+                (term
+                  (function
+                    (negative_identifier)))
+                (term
+                  (function
+                    (negative_identifier)))
+                (term
+                  (function
+                    (negative_identifier)))
+                (term
+                  (function
+                    (negative_identifier)))))))))))

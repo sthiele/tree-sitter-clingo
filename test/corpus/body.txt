@@ -1,0 +1,278 @@
+==================
+symbolic literals
+==================
+
+:- p(X), not p(X), not not p(X), -p(X), not -p(X), not not -p(X).
+
+---
+
+(source_file
+  (statement
+    (integrity_constraint
+      (body
+        (body_literal
+          (symbolic_atom
+            (identifier)
+            (pool
+              (terms
+                (term
+                  (variable))))))
+        (body_literal
+          (sign
+            (default_negation))
+          (symbolic_atom
+            (identifier)
+            (pool
+              (terms
+                (term
+                  (variable))))))
+        (body_literal
+          (sign
+            (default_negation)
+            (default_negation))
+          (symbolic_atom
+            (identifier)
+            (pool
+              (terms
+                (term
+                  (variable))))))
+        (body_literal
+          (symbolic_atom
+            (negative_identifier)
+            (pool
+              (terms
+                (term
+                  (variable))))))
+        (body_literal
+          (sign
+            (default_negation))
+          (symbolic_atom
+            (negative_identifier)
+            (pool
+              (terms
+                (term
+                  (variable))))))
+        (body_literal
+          (sign
+            (default_negation)
+            (default_negation))
+          (symbolic_atom
+            (negative_identifier)
+            (pool
+              (terms
+                (term
+                  (variable))))))))))
+
+==================
+comparisions
+==================
+
+:- X < Y < Z, -p(X) < X < Y.
+
+---
+
+(source_file
+  (statement
+    (integrity_constraint
+      (body
+        (body_literal
+          (comparison
+            (term
+              (variable))
+            (relation)
+            (term
+              (variable))
+            (relation)
+            (term
+              (variable))))
+        (body_literal
+          (comparison
+            (term
+              (function
+                (negative_identifier)
+                (pool
+                  (terms
+                    (term
+                      (variable))))))
+            (relation)
+            (term
+              (variable))
+            (relation)
+            (term
+              (variable))))))))
+
+==================
+conditional literals
+==================
+
+:- a, not b: p, c; p(X):; not not X < Y < Z: p(X).
+
+---
+
+(source_file
+  (statement
+    (integrity_constraint
+      (body
+        (body_literal
+          (symbolic_atom
+            (identifier)))
+        (body_literal
+          (conditional_literal
+            (literal
+              (sign
+                (default_negation))
+              (symbolic_atom
+                (identifier)))
+            (literal_tuple
+              (literal
+                (symbolic_atom
+                  (identifier)))
+              (literal
+                (symbolic_atom
+                  (identifier))))))
+        (body_literal
+          (conditional_literal
+            (literal
+              (symbolic_atom
+                (identifier)
+                (pool
+                  (terms
+                    (term
+                      (variable))))))))
+        (body_literal
+          (conditional_literal
+            (literal
+              (sign
+                (default_negation)
+                (default_negation))
+              (comparison
+                (term
+                  (variable))
+                (relation)
+                (term
+                  (variable))
+                (relation)
+                (term
+                  (variable))))
+            (literal_tuple
+              (literal
+                (symbolic_atom
+                  (identifier)
+                  (pool
+                    (terms
+                      (term
+                        (variable)))))))))))))
+
+==================
+body set aggregates
+==================
+
+:- not 1 { a; a: ; a: b; a: b, c } <= 3.
+
+---
+
+(source_file
+  (statement
+    (integrity_constraint
+      (body
+        (body_literal
+          (sign
+            (default_negation))
+          (set_aggregate
+            (lower
+              (term
+                (number)))
+            (set_aggregate_elements
+              (set_aggregate_element
+                (literal
+                  (symbolic_atom
+                    (identifier))))
+              (set_aggregate_element
+                (literal
+                  (symbolic_atom
+                    (identifier))))
+              (set_aggregate_element
+                (literal
+                  (symbolic_atom
+                    (identifier)))
+                (literal_tuple
+                  (literal
+                    (symbolic_atom
+                      (identifier)))))
+              (set_aggregate_element
+                (literal
+                  (symbolic_atom
+                    (identifier)))
+                (literal_tuple
+                  (literal
+                    (symbolic_atom
+                      (identifier)))
+                  (literal
+                    (symbolic_atom
+                      (identifier))))))
+            (upper
+              (relation)
+              (term
+                (number)))))))))
+
+==================
+body aggregates
+==================
+
+:- not 1 #count { :; :a; a; a: ; a: b, c; a, b } <= 3.
+
+---
+
+(source_file
+  (statement
+    (integrity_constraint
+      (body
+        (body_literal
+          (sign
+            (default_negation))
+          (body_aggregate
+            (lower
+              (term
+                (number)))
+            (aggregate_function)
+            (body_aggregate_elements
+              (body_aggregate_element)
+              (body_aggregate_element
+                (literal_tuple
+                  (literal
+                    (symbolic_atom
+                      (identifier)))))
+              (body_aggregate_element
+                (terms
+                  (term
+                    (function
+                      (identifier)))))
+              (body_aggregate_element
+                (terms
+                  (term
+                    (function
+                      (identifier)))))
+              (body_aggregate_element
+                (terms
+                  (term
+                    (function
+                      (identifier))))
+                (literal_tuple
+                  (literal
+                    (symbolic_atom
+                      (identifier)))
+                  (literal
+                    (symbolic_atom
+                      (identifier)))))
+              (body_aggregate_element
+                (terms
+                  (term
+                    (function
+                      (identifier)))
+                  (term
+                    (function
+                      (identifier))))))
+            (upper
+              (relation)
+              (term
+                (number)))))))))

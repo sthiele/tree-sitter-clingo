@@ -1,21 +1,304 @@
 [
   {
-    "type": "INFIMUM",
+    "type": "abs",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "term",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "aggregate_function",
     "named": true,
     "fields": {}
   },
   {
-    "type": "MAXIMIZE",
+    "type": "binary",
+    "named": true,
+    "fields": {
+      "lhs": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "term",
+            "named": true
+          }
+        ]
+      },
+      "op": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "*",
+            "named": false
+          },
+          {
+            "type": "**",
+            "named": false
+          },
+          {
+            "type": "+",
+            "named": false
+          },
+          {
+            "type": "-",
+            "named": false
+          },
+          {
+            "type": "..",
+            "named": false
+          },
+          {
+            "type": "/",
+            "named": false
+          },
+          {
+            "type": "?",
+            "named": false
+          },
+          {
+            "type": "\\",
+            "named": false
+          },
+          {
+            "type": "^",
+            "named": false
+          }
+        ]
+      },
+      "rhs": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "term",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "body",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "body_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "body_aggregate",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "aggregate_function",
+          "named": true
+        },
+        {
+          "type": "body_aggregate_elements",
+          "named": true
+        },
+        {
+          "type": "lower",
+          "named": true
+        },
+        {
+          "type": "upper",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "body_aggregate_element",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "literal_tuple",
+            "named": true
+          }
+        ]
+      },
+      "tuple": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "terms",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "body_aggregate_elements",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "body_aggregate_element",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "body_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "body_aggregate",
+          "named": true
+        },
+        {
+          "type": "boolean_constant",
+          "named": true
+        },
+        {
+          "type": "comparison",
+          "named": true
+        },
+        {
+          "type": "conditional_literal",
+          "named": true
+        },
+        {
+          "type": "set_aggregate",
+          "named": true
+        },
+        {
+          "type": "sign",
+          "named": true
+        },
+        {
+          "type": "symbolic_atom",
+          "named": true
+        },
+        {
+          "type": "theory_atom",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "boolean_constant",
     "named": true,
     "fields": {}
   },
   {
-    "type": "MINIMIZE",
+    "type": "comparison",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "relation",
+          "named": true
+        },
+        {
+          "type": "term",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "conditional_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "literal_tuple",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "const",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "const_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "term",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "const_type",
     "named": true,
     "fields": {}
   },
   {
-    "type": "NUMBER",
+    "type": "default_negation",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "defined",
     "named": true,
     "fields": {},
     "children": {
@@ -23,26 +306,926 @@
       "required": true,
       "types": [
         {
-          "type": "bin",
-          "named": true
-        },
-        {
-          "type": "dec",
-          "named": true
-        },
-        {
-          "type": "hex",
-          "named": true
-        },
-        {
-          "type": "oct",
+          "type": "signature",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "STRING",
+    "type": "disjunction",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "conditional_literal",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "edge",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "body",
+          "named": true
+        },
+        {
+          "type": "pool_binary",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "external",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "body",
+          "named": true
+        },
+        {
+          "type": "symbolic_atom",
+          "named": true
+        },
+        {
+          "type": "term",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "external_function",
+    "named": true,
+    "fields": {
+      "arguments": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "pool",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "named": true,
+    "fields": {
+      "arguments": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "pool",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "negative_identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "head",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "disjunction",
+          "named": true
+        },
+        {
+          "type": "head_aggregate",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "set_aggregate",
+          "named": true
+        },
+        {
+          "type": "theory_atom",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "head_aggregate",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "aggregate_function",
+          "named": true
+        },
+        {
+          "type": "head_aggregate_elements",
+          "named": true
+        },
+        {
+          "type": "lower",
+          "named": true
+        },
+        {
+          "type": "upper",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "head_aggregate_element",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "literal_tuple",
+            "named": true
+          }
+        ]
+      },
+      "literal": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "literal",
+            "named": true
+          }
+        ]
+      },
+      "tuple": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "terms",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "head_aggregate_elements",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "head_aggregate_element",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "heuristic",
+    "named": true,
+    "fields": {
+      "atom": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "symbolic_atom",
+            "named": true
+          }
+        ]
+      },
+      "body": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "body",
+            "named": true
+          }
+        ]
+      },
+      "priority": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "priority",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "term",
+            "named": true
+          }
+        ]
+      },
+      "weight": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "term",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "identifiers",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "include",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "infimum",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "integrity_constraint",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "body",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "boolean_constant",
+          "named": true
+        },
+        {
+          "type": "comparison",
+          "named": true
+        },
+        {
+          "type": "sign",
+          "named": true
+        },
+        {
+          "type": "symbolic_atom",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "literal_tuple",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "lower",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "relation",
+          "named": true
+        },
+        {
+          "type": "term",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "maximize",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "optimize_elements",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "minimize",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "optimize_elements",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "number",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "operator",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "operators",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "optimize_element",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "literal_tuple",
+            "named": true
+          }
+        ]
+      },
+      "tuple": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "terms",
+            "named": true
+          }
+        ]
+      },
+      "weight": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "priority",
+            "named": true
+          },
+          {
+            "type": "term",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "optimize_elements",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "optimize_element",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pool",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "terms",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pool_binary",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "term",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "priority",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "term",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "program",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "identifiers",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "project_atom",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "body",
+          "named": true
+        },
+        {
+          "type": "symbolic_atom",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "project_signature",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "signature",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "relation",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "rule",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "body",
+          "named": true
+        },
+        {
+          "type": "head",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "script",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "code",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "set_aggregate",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "lower",
+          "named": true
+        },
+        {
+          "type": "set_aggregate_elements",
+          "named": true
+        },
+        {
+          "type": "upper",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "set_aggregate_element",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "literal_tuple",
+            "named": true
+          }
+        ]
+      },
+      "literal": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "literal",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "set_aggregate_elements",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "set_aggregate_element",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "show",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "show_signature",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "signature",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "show_term",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "body",
+          "named": true
+        },
+        {
+          "type": "term",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "sign",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "default_negation",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "signature",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "negative_identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "const",
+          "named": true
+        },
+        {
+          "type": "defined",
+          "named": true
+        },
+        {
+          "type": "edge",
+          "named": true
+        },
+        {
+          "type": "external",
+          "named": true
+        },
+        {
+          "type": "heuristic",
+          "named": true
+        },
+        {
+          "type": "include",
+          "named": true
+        },
+        {
+          "type": "integrity_constraint",
+          "named": true
+        },
+        {
+          "type": "maximize",
+          "named": true
+        },
+        {
+          "type": "minimize",
+          "named": true
+        },
+        {
+          "type": "program",
+          "named": true
+        },
+        {
+          "type": "project_atom",
+          "named": true
+        },
+        {
+          "type": "project_signature",
+          "named": true
+        },
+        {
+          "type": "rule",
+          "named": true
+        },
+        {
+          "type": "script",
+          "named": true
+        },
+        {
+          "type": "show",
+          "named": true
+        },
+        {
+          "type": "show_signature",
+          "named": true
+        },
+        {
+          "type": "show_term",
+          "named": true
+        },
+        {
+          "type": "theory",
+          "named": true
+        },
+        {
+          "type": "weak_constraint",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "string",
     "named": true,
     "fields": {},
     "children": {
@@ -61,1496 +1244,38 @@
     }
   },
   {
-    "type": "SUPREMUM",
+    "type": "supremum",
     "named": true,
     "fields": {}
   },
   {
-    "type": "aggregatefunction",
+    "type": "symbolic_atom",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "COUNT",
-          "named": true
-        },
-        {
-          "type": "MAX",
-          "named": true
-        },
-        {
-          "type": "MIN",
-          "named": true
-        },
-        {
-          "type": "SUM",
-          "named": true
-        },
-        {
-          "type": "SUMP",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "altbodyaggrelem",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "optcondition",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "altbodyaggrelemvec",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "SEM",
-          "named": true
-        },
-        {
-          "type": "altbodyaggrelem",
-          "named": true
-        },
-        {
-          "type": "altbodyaggrelemvec",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "altheadaggrelemvec",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "SEM",
-          "named": true
-        },
-        {
-          "type": "altheadaggrelemvec",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "optcondition",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "argvec",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "SEM",
-          "named": true
-        },
-        {
-          "type": "argvec",
-          "named": true
-        },
-        {
-          "type": "termvec",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "atom",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "LPAREN",
-          "named": true
-        },
-        {
-          "type": "RPAREN",
-          "named": true
-        },
-        {
-          "type": "SUB",
-          "named": true
-        },
-        {
-          "type": "argvec",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "binaryargvec",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "COMMA",
-          "named": true
-        },
-        {
-          "type": "SEM",
-          "named": true
-        },
-        {
-          "type": "binaryargvec",
-          "named": true
-        },
-        {
-          "type": "term",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "bodyaggregate",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "LBRACE",
-          "named": true
-        },
-        {
-          "type": "RBRACE",
-          "named": true
-        },
-        {
-          "type": "aggregatefunction",
-          "named": true
-        },
-        {
-          "type": "altbodyaggrelemvec",
-          "named": true
-        },
-        {
-          "type": "bodyaggrelemvec",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "bodyaggrelem",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "COLON",
-          "named": true
-        },
-        {
-          "type": "litvec",
-          "named": true
-        },
-        {
-          "type": "optcondition",
-          "named": true
-        },
-        {
-          "type": "termvec",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "bodyaggrelemvec",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "SEM",
-          "named": true
-        },
-        {
-          "type": "bodyaggrelem",
-          "named": true
-        },
-        {
-          "type": "bodyaggrelemvec",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "bodycomma",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "COMMA",
-          "named": true
-        },
-        {
-          "type": "NOT",
-          "named": true
-        },
-        {
-          "type": "SEM",
-          "named": true
-        },
-        {
-          "type": "bodycomma",
-          "named": true
-        },
-        {
-          "type": "conjunction",
-          "named": true
-        },
-        {
-          "type": "disjoint",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "lubodyaggregate",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "bodyconddot",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "COLON",
-          "named": true
-        },
-        {
-          "type": "DOT",
-          "named": true
-        },
-        {
-          "type": "bodydot",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "bodydot",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "DOT",
-          "named": true
-        },
-        {
-          "type": "NOT",
-          "named": true
-        },
-        {
-          "type": "bodycomma",
-          "named": true
-        },
-        {
-          "type": "conjunction",
-          "named": true
-        },
-        {
-          "type": "disjoint",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "lubodyaggregate",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "cmp",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "EQ",
-          "named": true
-        },
-        {
-          "type": "GEQ",
-          "named": true
-        },
-        {
-          "type": "GT",
-          "named": true
-        },
-        {
-          "type": "LEQ",
-          "named": true
-        },
-        {
-          "type": "LT",
-          "named": true
-        },
-        {
-          "type": "NEQ",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "conjunction",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "COLON",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "litvec",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "constargvec",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "consttermvec",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "constterm",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "ADD",
-          "named": true
-        },
-        {
-          "type": "AND",
-          "named": true
-        },
-        {
-          "type": "AT",
-          "named": true
-        },
-        {
-          "type": "BNOT",
-          "named": true
-        },
-        {
-          "type": "COMMA",
-          "named": true
-        },
-        {
-          "type": "INFIMUM",
-          "named": true
-        },
-        {
-          "type": "LPAREN",
-          "named": true
-        },
-        {
-          "type": "MOD",
-          "named": true
-        },
-        {
-          "type": "MUL",
-          "named": true
-        },
-        {
-          "type": "NUMBER",
-          "named": true
-        },
-        {
-          "type": "POW",
-          "named": true
-        },
-        {
-          "type": "QUESTION",
-          "named": true
-        },
-        {
-          "type": "RPAREN",
-          "named": true
-        },
-        {
-          "type": "SLASH",
-          "named": true
-        },
-        {
-          "type": "STRING",
-          "named": true
-        },
-        {
-          "type": "SUB",
-          "named": true
-        },
-        {
-          "type": "SUPREMUM",
-          "named": true
-        },
-        {
-          "type": "VBAR",
-          "named": true
-        },
-        {
-          "type": "XOR",
-          "named": true
-        },
-        {
-          "type": "constargvec",
-          "named": true
-        },
-        {
-          "type": "constterm",
-          "named": true
-        },
-        {
-          "type": "consttermvec",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "consttermvec",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "COMMA",
-          "named": true
-        },
-        {
-          "type": "constterm",
-          "named": true
-        },
-        {
-          "type": "consttermvec",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "csp_add_term",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "CSP_ADD",
-          "named": true
-        },
-        {
-          "type": "CSP_SUB",
-          "named": true
-        },
-        {
-          "type": "csp_add_term",
-          "named": true
-        },
-        {
-          "type": "csp_mul_term",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "csp_literal",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "csp_add_term",
-          "named": true
-        },
-        {
-          "type": "csp_literal",
-          "named": true
-        },
-        {
-          "type": "csp_rel",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "csp_mul_term",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "CSP",
-          "named": true
-        },
-        {
-          "type": "CSP_MUL",
-          "named": true
-        },
-        {
-          "type": "term",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "csp_rel",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "CSP_EQ",
-          "named": true
-        },
-        {
-          "type": "CSP_GEQ",
-          "named": true
-        },
-        {
-          "type": "CSP_GT",
-          "named": true
-        },
-        {
-          "type": "CSP_LEQ",
-          "named": true
-        },
-        {
-          "type": "CSP_LT",
-          "named": true
-        },
-        {
-          "type": "CSP_NEQ",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "cspelemvec",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "COLON",
-          "named": true
-        },
-        {
-          "type": "SEM",
-          "named": true
-        },
-        {
-          "type": "csp_add_term",
-          "named": true
-        },
-        {
-          "type": "cspelemvec",
-          "named": true
-        },
-        {
-          "type": "optcondition",
-          "named": true
-        },
-        {
-          "type": "termvec",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dec",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "disjoint",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "DISJOINT",
-          "named": true
-        },
-        {
-          "type": "LBRACE",
-          "named": true
-        },
-        {
-          "type": "NOT",
-          "named": true
-        },
-        {
-          "type": "RBRACE",
-          "named": true
-        },
-        {
-          "type": "cspelemvec",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "disjunction",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "COLON",
-          "named": true
-        },
-        {
-          "type": "disjunctionsep",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "litvec",
-          "named": true
-        },
-        {
-          "type": "optcondition",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "disjunctionsep",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "COLON",
-          "named": true
-        },
-        {
-          "type": "COMMA",
-          "named": true
-        },
-        {
-          "type": "SEM",
-          "named": true
-        },
-        {
-          "type": "disjunctionsep",
-          "named": true
-        },
-        {
-          "type": "dsym",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "litvec",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dsym",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "SEM",
-          "named": true
-        },
-        {
-          "type": "VBAR",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "head",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "disjunction",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "luheadaggregate",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "headaggregate",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "LBRACE",
-          "named": true
-        },
-        {
-          "type": "RBRACE",
-          "named": true
-        },
-        {
-          "type": "aggregatefunction",
-          "named": true
-        },
-        {
-          "type": "altheadaggrelemvec",
-          "named": true
-        },
-        {
-          "type": "headaggrelemvec",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "headaggrelemvec",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "COLON",
-          "named": true
-        },
-        {
-          "type": "SEM",
-          "named": true
-        },
-        {
-          "type": "headaggrelemvec",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "optcondition",
-          "named": true
-        },
-        {
-          "type": "termvec",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "idlist",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "COMMA",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "idlist",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "literal",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "FALSE",
-          "named": true
-        },
-        {
-          "type": "NOT",
-          "named": true
-        },
-        {
-          "type": "TRUE",
-          "named": true
-        },
-        {
-          "type": "atom",
-          "named": true
-        },
-        {
-          "type": "csp_literal",
-          "named": true
-        },
-        {
-          "type": "rellitvec",
-          "named": true
-        },
-        {
-          "type": "term",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "litvec",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "COMMA",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "litvec",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "lubodyaggregate",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "bodyaggregate",
-          "named": true
-        },
-        {
-          "type": "cmp",
-          "named": true
-        },
-        {
-          "type": "term",
-          "named": true
-        },
-        {
-          "type": "theory_atom",
-          "named": true
-        },
-        {
-          "type": "upper",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "luheadaggregate",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "cmp",
-          "named": true
-        },
-        {
-          "type": "headaggregate",
-          "named": true
-        },
-        {
-          "type": "term",
-          "named": true
-        },
-        {
-          "type": "theory_atom",
-          "named": true
-        },
-        {
-          "type": "upper",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "maxelemlist",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "SEM",
-          "named": true
-        },
-        {
-          "type": "maxelemlist",
-          "named": true
-        },
-        {
-          "type": "optimizecond",
-          "named": true
-        },
-        {
-          "type": "optimizetuple",
-          "named": true
-        },
-        {
-          "type": "optimizeweight",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "minelemlist",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "SEM",
-          "named": true
-        },
-        {
-          "type": "minelemlist",
-          "named": true
-        },
-        {
-          "type": "optimizecond",
-          "named": true
-        },
-        {
-          "type": "optimizetuple",
-          "named": true
-        },
-        {
-          "type": "optimizeweight",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "optcondition",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "COLON",
-          "named": true
-        },
-        {
-          "type": "litvec",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "optimizecond",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "COLON",
-          "named": true
-        },
-        {
-          "type": "optimizelitvec",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "optimizelitvec",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "COMMA",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "optimizelitvec",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "optimizetuple",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "COMMA",
-          "named": true
-        },
-        {
-          "type": "termvec",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "optimizeweight",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "AT",
-          "named": true
-        },
-        {
-          "type": "term",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "rellitvec",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "cmp",
-          "named": true
-        },
-        {
-          "type": "rellitvec",
-          "named": true
-        },
-        {
-          "type": "term",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "source_file",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "statement",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "statement",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "AT",
-          "named": true
-        },
-        {
-          "type": "BLOCK",
-          "named": true
-        },
-        {
-          "type": "CODE",
-          "named": true
-        },
-        {
-          "type": "COLON",
-          "named": true
-        },
-        {
-          "type": "COMMA",
-          "named": true
-        },
-        {
-          "type": "CONST",
-          "named": true
-        },
-        {
-          "type": "CSP",
-          "named": true
-        },
-        {
-          "type": "DEFAULT",
-          "named": true
-        },
-        {
-          "type": "DEFINED",
-          "named": true
-        },
-        {
-          "type": "DOT",
-          "named": true
-        },
-        {
-          "type": "EDGE",
-          "named": true
-        },
-        {
-          "type": "EQ",
-          "named": true
-        },
-        {
-          "type": "EXTERNAL",
-          "named": true
-        },
-        {
-          "type": "GT",
-          "named": true
-        },
-        {
-          "type": "HEURISTIC",
-          "named": true
-        },
-        {
-          "type": "IF",
-          "named": true
-        },
-        {
-          "type": "INCLUDE",
-          "named": true
-        },
-        {
-          "type": "LBRACE",
-          "named": true
-        },
-        {
-          "type": "LBRACK",
-          "named": true
-        },
-        {
-          "type": "LPAREN",
-          "named": true
-        },
-        {
-          "type": "LT",
-          "named": true
-        },
-        {
-          "type": "MAXIMIZE",
-          "named": true
-        },
-        {
-          "type": "MINIMIZE",
-          "named": true
-        },
-        {
-          "type": "NUMBER",
-          "named": true
-        },
-        {
-          "type": "OVERRIDE",
-          "named": true
-        },
-        {
-          "type": "PROJECT",
-          "named": true
-        },
-        {
-          "type": "RBRACE",
-          "named": true
-        },
-        {
-          "type": "RBRACK",
-          "named": true
-        },
-        {
-          "type": "RPAREN",
-          "named": true
-        },
-        {
-          "type": "SCRIPT",
-          "named": true
-        },
-        {
-          "type": "SHOW",
-          "named": true
-        },
-        {
-          "type": "SLASH",
-          "named": true
-        },
-        {
-          "type": "STRING",
-          "named": true
-        },
-        {
-          "type": "SUB",
-          "named": true
-        },
-        {
-          "type": "THEORY",
-          "named": true
-        },
-        {
-          "type": "WIF",
-          "named": true
-        },
-        {
-          "type": "atom",
-          "named": true
-        },
-        {
-          "type": "binaryargvec",
-          "named": true
-        },
-        {
-          "type": "bodyconddot",
-          "named": true
-        },
-        {
-          "type": "bodydot",
-          "named": true
-        },
-        {
-          "type": "constterm",
-          "named": true
-        },
-        {
-          "type": "disjoint",
-          "named": true
-        },
-        {
-          "type": "head",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "idlist",
-          "named": true
-        },
-        {
-          "type": "maxelemlist",
-          "named": true
-        },
-        {
-          "type": "minelemlist",
-          "named": true
-        },
-        {
-          "type": "optimizetuple",
-          "named": true
-        },
-        {
-          "type": "optimizeweight",
-          "named": true
-        },
-        {
-          "type": "term",
-          "named": true
-        },
-        {
-          "type": "theory_definition_nlist",
-          "named": true
-        },
-        {
-          "type": "theory_identifier",
-          "named": true
-        }
-      ]
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "negative_identifier",
+            "named": true
+          }
+        ]
+      },
+      "pool": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "pool",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1558,118 +1283,77 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
-          "type": "ADD",
+          "type": "abs",
           "named": true
         },
         {
-          "type": "AND",
+          "type": "anonymous",
           "named": true
         },
         {
-          "type": "ANONYMOUS",
+          "type": "binary",
           "named": true
         },
         {
-          "type": "AT",
+          "type": "external_function",
           "named": true
         },
         {
-          "type": "BNOT",
+          "type": "function",
           "named": true
         },
         {
-          "type": "DOTS",
+          "type": "infimum",
           "named": true
         },
         {
-          "type": "INFIMUM",
+          "type": "number",
           "named": true
         },
         {
-          "type": "LPAREN",
+          "type": "string",
           "named": true
         },
         {
-          "type": "MOD",
+          "type": "supremum",
           "named": true
         },
         {
-          "type": "MUL",
+          "type": "tuple",
           "named": true
         },
         {
-          "type": "NUMBER",
+          "type": "unary",
           "named": true
         },
         {
-          "type": "POW",
-          "named": true
-        },
-        {
-          "type": "QUESTION",
-          "named": true
-        },
-        {
-          "type": "RPAREN",
-          "named": true
-        },
-        {
-          "type": "SLASH",
-          "named": true
-        },
-        {
-          "type": "STRING",
-          "named": true
-        },
-        {
-          "type": "SUB",
-          "named": true
-        },
-        {
-          "type": "SUPREMUM",
-          "named": true
-        },
-        {
-          "type": "VARIABLE",
-          "named": true
-        },
-        {
-          "type": "VBAR",
-          "named": true
-        },
-        {
-          "type": "XOR",
-          "named": true
-        },
-        {
-          "type": "argvec",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "term",
-          "named": true
-        },
-        {
-          "type": "tuplevec",
-          "named": true
-        },
-        {
-          "type": "unaryargvec",
+          "type": "variable",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "termvec",
+    "type": "terms",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "term",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "theory",
     "named": true,
     "fields": {},
     "children": {
@@ -1677,15 +1361,15 @@
       "required": true,
       "types": [
         {
-          "type": "COMMA",
+          "type": "identifier",
           "named": true
         },
         {
-          "type": "term",
+          "type": "theory_atom_definition",
           "named": true
         },
         {
-          "type": "termvec",
+          "type": "theory_term_definition",
           "named": true
         }
       ]
@@ -1700,19 +1384,7 @@
       "required": true,
       "types": [
         {
-          "type": "AND",
-          "named": true
-        },
-        {
-          "type": "LBRACE",
-          "named": true
-        },
-        {
-          "type": "RBRACE",
-          "named": true
-        },
-        {
-          "type": "theory_atom_element_nlist",
+          "type": "operator",
           "named": true
         },
         {
@@ -1720,11 +1392,11 @@
           "named": true
         },
         {
-          "type": "theory_op",
+          "type": "theory_elements",
           "named": true
         },
         {
-          "type": "theory_opterm",
+          "type": "theory_term",
           "named": true
         }
       ]
@@ -1733,99 +1405,58 @@
   {
     "type": "theory_atom_definition",
     "named": true,
-    "fields": {},
+    "fields": {
+      "guard": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "term": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "theory_atom_type",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "AND",
+          "type": "number",
           "named": true
         },
         {
-          "type": "COLON",
-          "named": true
-        },
-        {
-          "type": "COMMA",
-          "named": true
-        },
-        {
-          "type": "LBRACE",
-          "named": true
-        },
-        {
-          "type": "NUMBER",
-          "named": true
-        },
-        {
-          "type": "RBRACE",
-          "named": true
-        },
-        {
-          "type": "SLASH",
-          "named": true
-        },
-        {
-          "type": "theory_atom_type",
-          "named": true
-        },
-        {
-          "type": "theory_definition_identifier",
-          "named": true
-        },
-        {
-          "type": "theory_operator_nlist",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "theory_atom_element",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "COLON",
-          "named": true
-        },
-        {
-          "type": "litvec",
-          "named": true
-        },
-        {
-          "type": "optcondition",
-          "named": true
-        },
-        {
-          "type": "theory_opterm_nlist",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "theory_atom_element_nlist",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "SEM",
-          "named": true
-        },
-        {
-          "type": "theory_atom_element",
-          "named": true
-        },
-        {
-          "type": "theory_atom_element_nlist",
+          "type": "operators",
           "named": true
         }
       ]
@@ -1840,19 +1471,11 @@
       "required": true,
       "types": [
         {
-          "type": "LPAREN",
-          "named": true
-        },
-        {
-          "type": "RPAREN",
-          "named": true
-        },
-        {
-          "type": "argvec",
-          "named": true
-        },
-        {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "pool",
           "named": true
         }
       ]
@@ -1861,79 +1484,29 @@
   {
     "type": "theory_atom_type",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "ANY",
-          "named": true
-        },
-        {
-          "type": "BODY",
-          "named": true
-        },
-        {
-          "type": "DIRECTIVE",
-          "named": true
-        },
-        {
-          "type": "HEAD",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
-    "type": "theory_definition_identifier",
+    "type": "theory_element",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
-      "required": true,
+      "multiple": true,
+      "required": false,
       "types": [
         {
-          "type": "ANY",
+          "type": "literal_tuple",
           "named": true
         },
         {
-          "type": "BINARY",
-          "named": true
-        },
-        {
-          "type": "BODY",
-          "named": true
-        },
-        {
-          "type": "DIRECTIVE",
-          "named": true
-        },
-        {
-          "type": "HEAD",
-          "named": true
-        },
-        {
-          "type": "LEFT",
-          "named": true
-        },
-        {
-          "type": "RIGHT",
-          "named": true
-        },
-        {
-          "type": "UNARY",
-          "named": true
-        },
-        {
-          "type": "identifier",
+          "type": "theory_terms",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "theory_definition_nlist",
+    "type": "theory_elements",
     "named": true,
     "fields": {},
     "children": {
@@ -1941,60 +1514,14 @@
       "required": true,
       "types": [
         {
-          "type": "SEM",
-          "named": true
-        },
-        {
-          "type": "theory_atom_definition",
-          "named": true
-        },
-        {
-          "type": "theory_definition_nlist",
-          "named": true
-        },
-        {
-          "type": "theory_term_definition",
+          "type": "theory_element",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "theory_identifier",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "theory_op",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "NOT",
-          "named": true
-        },
-        {
-          "type": "THEORY_OP",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "theory_op_list",
+    "type": "theory_function",
     "named": true,
     "fields": {},
     "children": {
@@ -2002,15 +1529,35 @@
       "required": true,
       "types": [
         {
-          "type": "theory_op",
+          "type": "identifier",
           "named": true
         },
         {
-          "type": "theory_op_list",
+          "type": "theory_terms",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "theory_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "theory_term",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "theory_operator_associativity",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "theory_operator_definition",
@@ -2021,127 +1568,49 @@
       "required": true,
       "types": [
         {
-          "type": "BINARY",
+          "type": "number",
           "named": true
         },
         {
-          "type": "COLON",
+          "type": "operator",
           "named": true
         },
         {
-          "type": "COMMA",
+          "type": "theory_operator_arity",
           "named": true
         },
         {
-          "type": "LEFT",
-          "named": true
-        },
-        {
-          "type": "NUMBER",
-          "named": true
-        },
-        {
-          "type": "RIGHT",
-          "named": true
-        },
-        {
-          "type": "UNARY",
-          "named": true
-        },
-        {
-          "type": "theory_op",
+          "type": "theory_operator_associativity",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "theory_operator_definition_nlist",
+    "type": "theory_operator_definitions",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "SEM",
-          "named": true
-        },
         {
           "type": "theory_operator_definition",
           "named": true
-        },
-        {
-          "type": "theory_operator_definition_nlist",
-          "named": true
         }
       ]
     }
   },
   {
-    "type": "theory_operator_nlist",
+    "type": "theory_set",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
-        {
-          "type": "COMMA",
-          "named": true
-        },
-        {
-          "type": "theory_op",
-          "named": true
-        },
-        {
-          "type": "theory_operator_nlist",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "theory_opterm",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "theory_op_list",
-          "named": true
-        },
-        {
-          "type": "theory_opterm",
-          "named": true
-        },
         {
           "type": "theory_term",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "theory_opterm_nlist",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "COMMA",
-          "named": true
-        },
-        {
-          "type": "theory_opterm",
-          "named": true
-        },
-        {
-          "type": "theory_opterm_nlist",
           "named": true
         }
       ]
@@ -2152,67 +1621,51 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
-          "type": "COMMA",
+          "type": "anonymous",
           "named": true
         },
         {
-          "type": "INFIMUM",
+          "type": "infimum",
           "named": true
         },
         {
-          "type": "LBRACE",
+          "type": "number",
           "named": true
         },
         {
-          "type": "LBRACK",
+          "type": "string",
           "named": true
         },
         {
-          "type": "LPAREN",
+          "type": "supremum",
           "named": true
         },
         {
-          "type": "NUMBER",
+          "type": "theory_function",
           "named": true
         },
         {
-          "type": "RBRACE",
+          "type": "theory_list",
           "named": true
         },
         {
-          "type": "RBRACK",
+          "type": "theory_set",
           "named": true
         },
         {
-          "type": "RPAREN",
+          "type": "theory_tuple",
           "named": true
         },
         {
-          "type": "STRING",
+          "type": "theory_unparsed_term",
           "named": true
         },
         {
-          "type": "SUPREMUM",
-          "named": true
-        },
-        {
-          "type": "VARIABLE",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "theory_opterm",
-          "named": true
-        },
-        {
-          "type": "theory_opterm_nlist",
+          "type": "variable",
           "named": true
         }
       ]
@@ -2227,19 +1680,60 @@
       "required": true,
       "types": [
         {
-          "type": "LBRACE",
+          "type": "identifier",
           "named": true
         },
         {
-          "type": "RBRACE",
+          "type": "theory_operator_definitions",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "theory_terms",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "theory_term",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "theory_tuple",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "theory_term",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "theory_unparsed_term",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "operators",
           "named": true
         },
         {
-          "type": "theory_definition_identifier",
-          "named": true
-        },
-        {
-          "type": "theory_operator_definition_nlist",
+          "type": "theory_term",
           "named": true
         }
       ]
@@ -2254,79 +1748,40 @@
       "required": true,
       "types": [
         {
-          "type": "COMMA",
-          "named": true
-        },
-        {
-          "type": "termvec",
+          "type": "terms",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "tuplevec",
+    "type": "unary",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "tuplevec_sem",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "tuplevec_sem",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "SEM",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "tuplevec_sem",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "unaryargvec",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "SEM",
-          "named": true
-        },
-        {
-          "type": "term",
-          "named": true
-        },
-        {
-          "type": "unaryargvec",
-          "named": true
-        }
-      ]
+    "fields": {
+      "op": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "-",
+            "named": false
+          },
+          {
+            "type": "~",
+            "named": false
+          }
+        ]
+      },
+      "rhs": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "term",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -2338,7 +1793,7 @@
       "required": true,
       "types": [
         {
-          "type": "cmp",
+          "type": "relation",
           "named": true
         },
         {
@@ -2349,7 +1804,74 @@
     }
   },
   {
+    "type": "weak_constraint",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "body",
+          "named": true
+        },
+        {
+          "type": "priority",
+          "named": true
+        },
+        {
+          "type": "term",
+          "named": true
+        },
+        {
+          "type": "terms",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "!=",
+    "named": false
+  },
+  {
     "type": "\"",
+    "named": false
+  },
+  {
+    "type": "#const",
+    "named": false
+  },
+  {
+    "type": "#count",
+    "named": false
+  },
+  {
+    "type": "#defined",
+    "named": false
+  },
+  {
+    "type": "#edge",
+    "named": false
+  },
+  {
+    "type": "#end",
+    "named": false
+  },
+  {
+    "type": "#external",
+    "named": false
+  },
+  {
+    "type": "#false",
+    "named": false
+  },
+  {
+    "type": "#heuristic",
+    "named": false
+  },
+  {
+    "type": "#include",
     "named": false
   },
   {
@@ -2361,11 +1883,19 @@
     "named": false
   },
   {
+    "type": "#max",
+    "named": false
+  },
+  {
     "type": "#maximise",
     "named": false
   },
   {
     "type": "#maximize",
+    "named": false
+  },
+  {
+    "type": "#min",
     "named": false
   },
   {
@@ -2377,6 +1907,30 @@
     "named": false
   },
   {
+    "type": "#program",
+    "named": false
+  },
+  {
+    "type": "#project",
+    "named": false
+  },
+  {
+    "type": "#script",
+    "named": false
+  },
+  {
+    "type": "#show",
+    "named": false
+  },
+  {
+    "type": "#sum",
+    "named": false
+  },
+  {
+    "type": "#sum+",
+    "named": false
+  },
+  {
     "type": "#sup",
     "named": false
   },
@@ -2385,343 +1939,211 @@
     "named": false
   },
   {
+    "type": "#theory",
+    "named": false
+  },
+  {
+    "type": "#true",
+    "named": false
+  },
+  {
+    "type": "&",
+    "named": false
+  },
+  {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
+  },
+  {
+    "type": "*",
+    "named": false
+  },
+  {
+    "type": "**",
+    "named": false
+  },
+  {
+    "type": "+",
+    "named": false
+  },
+  {
+    "type": ",",
+    "named": false
+  },
+  {
+    "type": "-",
+    "named": false
+  },
+  {
+    "type": ".",
+    "named": false
+  },
+  {
+    "type": "..",
+    "named": false
+  },
+  {
+    "type": "/",
+    "named": false
+  },
+  {
     "type": "0",
     "named": false
   },
   {
-    "type": "==",
+    "type": ":",
     "named": false
   },
   {
-    "type": "ADD",
-    "named": true
-  },
-  {
-    "type": "AND",
-    "named": true
-  },
-  {
-    "type": "ANONYMOUS",
-    "named": true
-  },
-  {
-    "type": "ANY",
-    "named": true
-  },
-  {
-    "type": "AT",
-    "named": true
-  },
-  {
-    "type": "BINARY",
-    "named": true
-  },
-  {
-    "type": "BLOCK",
-    "named": true
-  },
-  {
-    "type": "BNOT",
-    "named": true
-  },
-  {
-    "type": "BODY",
-    "named": true
-  },
-  {
-    "type": "CODE",
-    "named": true
-  },
-  {
-    "type": "COLON",
-    "named": true
-  },
-  {
-    "type": "COMMA",
-    "named": true
-  },
-  {
-    "type": "CONST",
-    "named": true
-  },
-  {
-    "type": "COUNT",
-    "named": true
-  },
-  {
-    "type": "CSP",
-    "named": true
-  },
-  {
-    "type": "CSP_ADD",
-    "named": true
-  },
-  {
-    "type": "CSP_EQ",
-    "named": true
-  },
-  {
-    "type": "CSP_GEQ",
-    "named": true
-  },
-  {
-    "type": "CSP_GT",
-    "named": true
-  },
-  {
-    "type": "CSP_LEQ",
-    "named": true
-  },
-  {
-    "type": "CSP_LT",
-    "named": true
-  },
-  {
-    "type": "CSP_MUL",
-    "named": true
-  },
-  {
-    "type": "CSP_NEQ",
-    "named": true
-  },
-  {
-    "type": "CSP_SUB",
-    "named": true
-  },
-  {
-    "type": "DEFAULT",
-    "named": true
-  },
-  {
-    "type": "DEFINED",
-    "named": true
-  },
-  {
-    "type": "DIRECTIVE",
-    "named": true
-  },
-  {
-    "type": "DISJOINT",
-    "named": true
-  },
-  {
-    "type": "DOT",
-    "named": true
-  },
-  {
-    "type": "DOTS",
-    "named": true
-  },
-  {
-    "type": "EDGE",
-    "named": true
+    "type": ":-",
+    "named": false
   },
   {
-    "type": "EQ",
-    "named": true
-  },
-  {
-    "type": "EXTERNAL",
-    "named": true
-  },
-  {
-    "type": "FALSE",
-    "named": true
-  },
-  {
-    "type": "GEQ",
-    "named": true
-  },
-  {
-    "type": "GT",
-    "named": true
-  },
-  {
-    "type": "HEAD",
-    "named": true
-  },
-  {
-    "type": "HEURISTIC",
-    "named": true
-  },
-  {
-    "type": "IF",
-    "named": true
-  },
-  {
-    "type": "INCLUDE",
-    "named": true
-  },
-  {
-    "type": "LBRACE",
-    "named": true
-  },
-  {
-    "type": "LBRACK",
-    "named": true
-  },
-  {
-    "type": "LEFT",
-    "named": true
-  },
-  {
-    "type": "LEQ",
-    "named": true
-  },
-  {
-    "type": "LPAREN",
-    "named": true
-  },
-  {
-    "type": "LT",
-    "named": true
-  },
-  {
-    "type": "MAX",
-    "named": true
+    "type": ":~",
+    "named": false
   },
   {
-    "type": "MIN",
-    "named": true
-  },
-  {
-    "type": "MOD",
-    "named": true
-  },
-  {
-    "type": "MUL",
-    "named": true
-  },
-  {
-    "type": "NEQ",
-    "named": true
-  },
-  {
-    "type": "NOT",
-    "named": true
-  },
-  {
-    "type": "OVERRIDE",
-    "named": true
-  },
-  {
-    "type": "POW",
-    "named": true
-  },
-  {
-    "type": "PROJECT",
-    "named": true
-  },
-  {
-    "type": "QUESTION",
-    "named": true
-  },
-  {
-    "type": "RBRACE",
-    "named": true
+    "type": ";",
+    "named": false
   },
   {
-    "type": "RBRACK",
-    "named": true
-  },
-  {
-    "type": "RIGHT",
-    "named": true
+    "type": "<",
+    "named": false
   },
   {
-    "type": "RPAREN",
-    "named": true
+    "type": "<=",
+    "named": false
   },
   {
-    "type": "SCRIPT",
-    "named": true
+    "type": "=",
+    "named": false
   },
   {
-    "type": "SEM",
-    "named": true
+    "type": ">",
+    "named": false
   },
   {
-    "type": "SHOW",
-    "named": true
+    "type": ">=",
+    "named": false
   },
   {
-    "type": "SLASH",
-    "named": true
+    "type": "?",
+    "named": false
   },
   {
-    "type": "SUB",
-    "named": true
+    "type": "@",
+    "named": false
   },
   {
-    "type": "SUM",
-    "named": true
+    "type": "[",
+    "named": false
   },
   {
-    "type": "SUMP",
-    "named": true
+    "type": "\\",
+    "named": false
   },
   {
-    "type": "THEORY",
-    "named": true
+    "type": "]",
+    "named": false
   },
   {
-    "type": "THEORY_OP",
-    "named": true
+    "type": "^",
+    "named": false
   },
   {
-    "type": "TRUE",
+    "type": "anonymous",
     "named": true
   },
   {
-    "type": "UNARY",
-    "named": true
+    "type": "any",
+    "named": false
   },
   {
-    "type": "VARIABLE",
+    "type": "block_comment",
     "named": true
   },
   {
-    "type": "VBAR",
-    "named": true
+    "type": "body",
+    "named": false
   },
   {
-    "type": "WIF",
+    "type": "code",
     "named": true
   },
   {
-    "type": "XOR",
-    "named": true
+    "type": "default",
+    "named": false
   },
   {
-    "type": "bin",
-    "named": true
+    "type": "directive",
+    "named": false
   },
   {
     "type": "escape_sequence",
     "named": true
   },
   {
-    "type": "hex",
-    "named": true
+    "type": "head",
+    "named": false
   },
   {
     "type": "identifier",
     "named": true
   },
   {
-    "type": "multi_comment",
+    "type": "left",
+    "named": false
+  },
+  {
+    "type": "line_comment",
     "named": true
   },
   {
-    "type": "oct",
+    "type": "negative_identifier",
     "named": true
   },
   {
-    "type": "single_comment",
-    "named": true
+    "type": "not",
+    "named": false
+  },
+  {
+    "type": "override",
+    "named": false
+  },
+  {
+    "type": "right",
+    "named": false
   },
   {
     "type": "string_fragment",
     "named": true
+  },
+  {
+    "type": "theory_operator_arity",
+    "named": true
+  },
+  {
+    "type": "variable",
+    "named": true
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "|",
+    "named": false
+  },
+  {
+    "type": "}",
+    "named": false
+  },
+  {
+    "type": "~",
+    "named": false
   }
 ]

@@ -34,11 +34,5 @@
     "bindings/node/*",
     "queries/*",
     "src/**"
-  ],
-  "tree-sitter": [
-    {
-      "scope": "source.clingo",
-      "injection-regex": "^clingo$"
-    }
   ]
 }

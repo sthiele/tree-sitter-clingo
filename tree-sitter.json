@@ -1,0 +1,28 @@
+{
+  "grammars": [
+    {
+      "name": "clingo",
+      "camelcase": "Clingo",
+      "scope": "source.clingo",
+      "path": ".",
+      "file-types": null,
+      "injection-regex": "^clingo$"
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "license": "MIT",
+    "description": "tree-sitter parser for the clingo language",
+    "links": {
+      "repository": "https://github.com/rkaminsk/tree-sitter-clingo"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true
+  }
+}

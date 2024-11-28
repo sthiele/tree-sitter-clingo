@@ -1,0 +1,375 @@
+==================
+theory guard
+==================
+
+&p <= 5.
+
+---
+
+(source_file
+  (statement
+    (rule
+      (head
+        (theory_atom
+          (theory_atom_name
+            (identifier))
+          (operator)
+          (theory_term
+            (number)))))))
+
+==================
+theory elements
+==================
+
+&p { : ; 1; 1,2; 1:a,b; 1,2:a }.
+
+---
+
+(source_file
+  (statement
+    (rule
+      (head
+        (theory_atom
+          (theory_atom_name
+            (identifier))
+          (theory_elements
+            (theory_element)
+            (theory_element
+              (theory_terms
+                (theory_term
+                  (number))))
+            (theory_element
+              (theory_terms
+                (theory_term
+                  (number))
+                (theory_term
+                  (number))))
+            (theory_element
+              (theory_terms
+                (theory_term
+                  (number)))
+              (literal_tuple
+                (literal
+                  (symbolic_atom
+                    (identifier)))
+                (literal
+                  (symbolic_atom
+                    (identifier)))))
+            (theory_element
+              (theory_terms
+                (theory_term
+                  (number))
+                (theory_term
+                  (number)))
+              (literal_tuple
+                (literal
+                  (symbolic_atom
+                    (identifier)))))))))))
+
+==================
+theory tuple
+==================
+
+&p { (); (,); (1); (1,); (1,2); (1,2,) }.
+
+---
+
+(source_file
+  (statement
+    (rule
+      (head
+        (theory_atom
+          (theory_atom_name
+            (identifier))
+          (theory_elements
+            (theory_element
+              (theory_terms
+                (theory_term
+                  (theory_tuple))))
+            (theory_element
+              (theory_terms
+                (theory_term
+                  (theory_tuple))))
+            (theory_element
+              (theory_terms
+                (theory_term
+                  (theory_tuple
+                    (theory_term
+                      (number))))))
+            (theory_element
+              (theory_terms
+                (theory_term
+                  (theory_tuple
+                    (theory_term
+                      (number))))))
+            (theory_element
+              (theory_terms
+                (theory_term
+                  (theory_tuple
+                    (theory_term
+                      (number))
+                    (theory_term
+                      (number))))))
+            (theory_element
+              (theory_terms
+                (theory_term
+                  (theory_tuple
+                    (theory_term
+                      (number))
+                    (theory_term
+                      (number))))))))))))
+
+==================
+theory list
+==================
+
+&p { []; [1]; [1,2] }.
+
+---
+
+(source_file
+  (statement
+    (rule
+      (head
+        (theory_atom
+          (theory_atom_name
+            (identifier))
+          (theory_elements
+            (theory_element
+              (theory_terms
+                (theory_term
+                  (theory_list))))
+            (theory_element
+              (theory_terms
+                (theory_term
+                  (theory_list
+                    (theory_term
+                      (number))))))
+            (theory_element
+              (theory_terms
+                (theory_term
+                  (theory_list
+                    (theory_term
+                      (number))
+                    (theory_term
+                      (number))))))))))))
+
+==================
+theory set
+==================
+
+&p { {}; {1}; {1,2} }.
+
+---
+
+(source_file
+  (statement
+    (rule
+      (head
+        (theory_atom
+          (theory_atom_name
+            (identifier))
+          (theory_elements
+            (theory_element
+              (theory_terms
+                (theory_term
+                  (theory_set))))
+            (theory_element
+              (theory_terms
+                (theory_term
+                  (theory_set
+                    (theory_term
+                      (number))))))
+            (theory_element
+              (theory_terms
+                (theory_term
+                  (theory_set
+                    (theory_term
+                      (number))
+                    (theory_term
+                      (number))))))))))))
+
+==================
+theory function
+==================
+
+&p { f, f(), f(1), f(1,2) }.
+
+---
+
+(source_file
+  (statement
+    (rule
+      (head
+        (theory_atom
+          (theory_atom_name
+            (identifier))
+          (theory_elements
+            (theory_element
+              (theory_terms
+                (theory_term
+                  (theory_function
+                    (identifier)))
+                (theory_term
+                  (theory_function
+                    (identifier)))
+                (theory_term
+                  (theory_function
+                    (identifier)
+                    (theory_terms
+                      (theory_term
+                        (number)))))
+                (theory_term
+                  (theory_function
+                    (identifier)
+                    (theory_terms
+                      (theory_term
+                        (number))
+                      (theory_term
+                        (number)))))))))))))
+
+==================
+theory terms
+==================
+
+&p { 1, #sup, #inf, "str", X, _ }.
+
+---
+
+(source_file
+  (statement
+    (rule
+      (head
+        (theory_atom
+          (theory_atom_name
+            (identifier))
+          (theory_elements
+            (theory_element
+              (theory_terms
+                (theory_term
+                  (number))
+                (theory_term
+                  (supremum))
+                (theory_term
+                  (infimum))
+                (theory_term
+                  (string
+                    (string_fragment)))
+                (theory_term
+                  (variable))
+                (theory_term
+                  (anonymous))))))))))
+
+==================
+theory unparsed
+==================
+
+&p { - 1, -1 * f(2), - + 1 * 2 ** 3 }.
+
+---
+
+(source_file
+  (statement
+    (rule
+      (head
+        (theory_atom
+          (theory_atom_name
+            (identifier))
+          (theory_elements
+            (theory_element
+              (theory_terms
+                (theory_term
+                  (theory_unparsed_term
+                    (operators
+                      (operator))
+                    (theory_term
+                      (number))))
+                (theory_term
+                  (theory_unparsed_term
+                    (operators
+                      (operator))
+                    (theory_term
+                      (number))
+                    (operators
+                      (operator))
+                    (theory_term
+                      (theory_function
+                        (identifier)
+                        (theory_terms
+                          (theory_term
+                            (number)))))))
+                (theory_term
+                  (theory_unparsed_term
+                    (operators
+                      (operator)
+                      (operator))
+                    (theory_term
+                      (number))
+                    (operators
+                      (operator))
+                    (theory_term
+                      (number))
+                    (operators
+                      (operator))
+                    (theory_term
+                      (number))))))))))))
+
+==================
+theory definition
+==================
+
+#theory lp { 
+    lin_term {
+    + : 0, binary, left;
+    + : 1, binary, right;
+    + : 2, unary
+    };
+    bounds{ };
+
+    &op/0   : lin_term, any;
+    &op/1   : lin_term, { <=, >=, <, >, !=, = }, bounds, any
+}.
+
+---
+
+(source_file
+  (statement
+    (theory
+      (identifier)
+      (theory_term_definition
+        (identifier)
+        (theory_operator_definitions
+          (theory_operator_definition
+            (operator)
+            (number)
+            (theory_operator_arity)
+            (theory_operator_associativity))
+          (theory_operator_definition
+            (operator)
+            (number)
+            (theory_operator_arity)
+            (theory_operator_associativity))
+          (theory_operator_definition
+            (operator)
+            (number)
+            (theory_operator_arity))))
+      (theory_term_definition
+        (identifier))
+      (theory_atom_definition
+        (identifier)
+        (number)
+        (identifier)
+        (theory_atom_type))
+      (theory_atom_definition
+        (identifier)
+        (number)
+        (identifier)
+        (operators
+          (operator)
+          (operator)
+          (operator)
+          (operator)
+          (operator)
+          (operator))
+        (identifier)
+        (theory_atom_type)))))
